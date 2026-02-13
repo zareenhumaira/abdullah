@@ -1,85 +1,146 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Valentine Drama 💖</title>
+  <title>Will You Be My Valentine? 💖</title>
   <style>
     body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top, #ffdde1, #ee9ca7);
+      font-family: 'Comic Sans MS', cursive;
       text-align: center;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #ff9a9e, #fad0c4);
-      color: white;
-      padding-top: 80px;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-top: 120px;
+      font-size: 40px;
+      color: #fff;
+      text-shadow: 2px 2px 5px #ff4d6d;
+      animation: floatText 3s infinite ease-in-out;
+    }
+
+    @keyframes floatText {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .buttons {
+      margin-top: 40px;
     }
 
     button {
-      padding: 12px 25px;
-      border-radius: 12px;
+      padding: 15px 30px;
+      font-size: 20px;
       border: none;
-      font-size: 16px;
+      border-radius: 30px;
       cursor: pointer;
+      transition: 0.3s;
       margin: 10px;
     }
 
-    .yes {
+    #yesBtn {
       background-color: #ff4d6d;
       color: white;
+      box-shadow: 0 0 15px #ff4d6d;
     }
 
-    .no {
+    #yesBtn:hover {
+      background-color: #ff1e4d;
+      transform: scale(1.1);
+    }
+
+    #noBtn {
       background-color: white;
       color: #ff4d6d;
+      position: absolute;
     }
 
-    img {
-      margin-top: 20px;
-      width: 200px;
-      border-radius: 15px;
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: float 6s linear infinite;
     }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    /* Clouds */
+    .cloud {
+      position: absolute;
+      font-size: 50px;
+      animation: moveClouds 30s linear infinite;
+    }
+
+    @keyframes moveClouds {
+      0% { left: -10%; }
+      100% { left: 110%; }
+    }
+
+    .sticker {
+      position: absolute;
+      font-size: 40px;
+    }
+
   </style>
 </head>
+
 <body>
 
-<div id="content">
-  <h1>Will you be my Valentine, Abdullah? 💖</h1>
-  <button class="yes" onclick="sayYes()">YES 💕</button>
-  <button class="no" onclick="sayNo()">NO 😢</button>
-</div>
+  ☁️<div class="cloud" style="top:50px;">☁️☁️</div>
+  ☁️<div class="cloud" style="top:120px; animation-duration:40s;">☁️</div>
+
+  <div class="sticker" style="top:20px; left:20px;">💘</div>
+  <div class="sticker" style="top:20px; right:20px;">💝</div>
+  <div class="sticker" style="bottom:20px; left:20px;">🌹</div>
+  <div class="sticker" style="bottom:20px; right:20px;">💞</div>
+
+  <h1>Will You Be My Valentine? 💖</h1>
+
+  <div class="buttons">
+    <button id="yesBtn" onclick="sayYes()">Yes 💕</button>
+    <button id="noBtn" onmouseover="moveNo()">No 😜</button>
+  </div>
 
 <script>
-let noCount = 0;
 
-function sayNo() {
-  noCount++;
-
-  if (noCount === 1) {
-    document.getElementById("content").innerHTML = `
-      <h1>Think again 🥺</h1>
-      <button class="yes" onclick="sayYes()">YES 💕</button>
-      <button class="no" onclick="sayNo()">NO 😢</button>
-    `;
-  } 
-  else if (noCount === 2) {
-    document.getElementById("content").innerHTML = `
-      <h1>You are hurting me 💔</h1>
-      <button class="yes" onclick="sayYes()">YES 💕</button>
-      <button class="no" onclick="sayNo()">NO 😢</button>
-    `;
-  } 
-  else if (noCount === 3) {
-    document.getElementById("content").innerHTML = `
-      <h1>Enough... I am crying now 😭</h1>
-      <button class="yes" onclick="sayYes()">YES 💕</button>
-    `;
+  function sayYes() {
+    alert("YAYYY 💖 You just made me the happiest person ever! 💍💘");
   }
-}
 
-function sayYes() {
-  document.getElementById("content").innerHTML = `
-    <h1>YAYYY I knew it Abdullah 💖</h1>
-    <p>You are my forever person 🥰</p>
-    <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
-  `;
-}
+  function moveNo() {
+    var x = Math.random() * window.innerWidth;
+    var y = Math.random() * window.innerHeight;
+    var noBtn = document.getElementById("noBtn");
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  }
+
+  // Create floating hearts
+  setInterval(function() {
+    var heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(function() {
+      heart.remove();
+    }, 6000);
+  }, 300);
+
 </script>
 
 </body>

@@ -30,18 +30,6 @@
       color: #ff4d6d;
     }
 
-    input {
-      padding: 10px;
-      border-radius: 10px;
-      border: none;
-      font-size: 16px;
-    }
-
-    #link {
-      margin-top: 20px;
-      font-weight: bold;
-    }
-
     img {
       margin-top: 20px;
       width: 200px;
@@ -56,14 +44,6 @@
   <button class="yes" onclick="sayYes()">YES 💕</button>
   <button class="no" onclick="sayNo()">NO 😢</button>
 </div>
-
-<hr style="margin:40px;">
-
-<h2>Generate Love Link 💌</h2>
-<input type="text" id="nameInput" placeholder="Enter name">
-<br><br>
-<button onclick="generateLink()">Generate</button>
-<p id="link"></p>
 
 <script>
 let noCount = 0;
@@ -99,17 +79,6 @@ function sayYes() {
     <p>You are my forever person 🥰</p>
     <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif">
   `;
-}
-
-function generateLink() {
-  const name = document.getElementById("nameInput").value;
-  if (name) {
-    const url = window.location.origin + window.location.pathname + "?name=" + encodeURIComponent(name);
-    document.getElementById("link").innerHTML = `
-      💝 Share this link:<br>
-      <a href="${url}" style="color:white;">${url}</a>
-    `;
-  }
 }
 </script>
 

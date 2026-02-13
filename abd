@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Will You Be My Valentine abdullah? 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to top, #ffdde1, #ee9ca7);
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-top: 120px;
+      font-size: 40px;
+      color: #fff;
+      text-shadow: 2px 2px 5px #ff4d6d;
+      animation: floatText 3s infinite ease-in-out;
+    }
+
+    @keyframes floatText {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .buttons {
+      margin-top: 40px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin: 10px;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+      box-shadow: 0 0 15px #ff4d6d;
+    }
+
+    #yesBtn:hover {
+      background-color: #ff1e4d;
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background-color: white;
+      color: #ff4d6d;
+      position: absolute;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    /* Clouds */
+    .cloud {
+      position: absolute;
+      font-size: 50px;
+      animation: moveClouds 30s linear infinite;
+    }
+
+    @keyframes moveClouds {
+      0% { left: -10%; }
+      100% { left: 110%; }
+    }
+
+    .sticker {
+      position: absolute;
+      font-size: 40px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  ☁️<div class="cloud" style="top:50px;">☁️☁️</div>
+  ☁️<div class="cloud" style="top:120px; animation-duration:40s;">☁️</div>
+
+  <div class="sticker" style="top:20px; left:20px;">💘</div>
+  <div class="sticker" style="top:20px; right:20px;">💝</div>
+  <div class="sticker" style="bottom:20px; left:20px;">🌹</div>
+  <div class="sticker" style="bottom:20px; right:20px;">💞</div>
+
+  <h1>Will You Be My Valentine? 💖</h1>
+
+  <div class="buttons">
+    <button id="yesBtn" onclick="sayYes()">Yes 💕</button>
+    <button id="noBtn" onmouseover="moveNo()">No 😜</button>
+  </div>
+
+<script>
+
+  function sayYes() {
+    alert("YAYYY 💖 You just made me the happiest person ever! 💍💘");
+  }
+
+  function moveNo() {
+    var x = Math.random() * window.innerWidth;
+    var y = Math.random() * window.innerHeight;
+    var noBtn = document.getElementById("noBtn");
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  }
+
+  // Create floating hearts
+  setInterval(function() {
+    var heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(function() {
+      heart.remove();
+    }, 6000);
+  }, 300);
+
+</script>
+
+</body>
+</html>
